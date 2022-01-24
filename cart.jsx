@@ -120,10 +120,10 @@ const Products = (props) => {
     setItems(newItems);
   };
   const photos = [
-    "./apple.png",
-    "./beans.png",
-    "./orange.png",
-    "./cabbage.png",
+    "./images/apple.png",
+    "./images/beans.png",
+    "./images/orange.png",
+    "./images/cabbage.png",
   ];
 
   let list = items.map((item, index) => {
