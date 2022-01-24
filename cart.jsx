@@ -78,16 +78,8 @@ const Products = (props) => {
   const [items, setItems] = React.useState(products);
   const [cart, setCart] = React.useState([]);
   const [total, setTotal] = React.useState(0);
-  const {
-    Card,
-    Accordion,
-    Button,
-    Container,
-    Row,
-    Col,
-    Image,
-    Input,
-  } = ReactBootstrap;
+  const { Card, Accordion, Button, Container, Row, Col, Image, Input } =
+    ReactBootstrap;
   //  Fetch data
   const { Fragment, useState, useEffect, useReducer } = React;
   const [query, setQuery] = useState("http://localhost:1337/api/products");
@@ -127,7 +119,12 @@ const Products = (props) => {
     setCart(newCart);
     setItems(newItems);
   };
-  const photos = ["/apple.png", "/beans.png", "/orange.png", "/cabbage.png"];
+  const photos = [
+    "./apple.png",
+    "./beans.png",
+    "./orange.png",
+    "./cabbage.png",
+  ];
 
   let list = items.map((item, index) => {
     // let n = index + 1049;
