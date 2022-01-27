@@ -80,7 +80,7 @@ const Products = (props) => {
   const [total, setTotal] = React.useState(0);
   const { Card, Accordion, Button, Container, Row, Col, Image, Input } =
     ReactBootstrap;
-  //  Fetch data
+
   const { Fragment, useState, useEffect, useReducer } = React;
   const [query, setQuery] = useState("http://localhost:1337/api/products");
   const [{ data, isLoading, isError }, doFetch] = usedataApi(
@@ -91,7 +91,7 @@ const Products = (props) => {
   );
   console.log(`Rendering Products ${JSON.stringify(data)}`);
   console.log(query);
-  // Fetch data
+
   const addToCart = (e) => {
     let name = e.target.name;
     let item = items.filter((item) => item.name == name);
@@ -105,7 +105,6 @@ const Products = (props) => {
     console.log(`add to Cart ${JSON.stringify(item)}`);
     setCart([...cart, ...item]);
   };
-  //doFetch(query);
 
   const deleteCartItem = (delIndex) => {
     // this is the index in the cart not in the Product List
@@ -127,17 +126,7 @@ const Products = (props) => {
   ];
 
   let list = items.map((item, index) => {
-    // let n = index + 1049;
-    // let urlh = "https://picsum.photos/id/" + n + "/50/50";
-
     return (
-      // <li key={index}>
-      //   <Image src={photos[index]} width={70} roundedCircle />
-      //   <Button variant="primary" size="large">
-      //     {item.name}: ${item.cost} - Stock: {item.instock}
-      //   </Button>
-      //   <input name={item.name} type="submit" onClick={addToCart} />
-      // </li>
       <Card key={index} className="my-4 shadow" border="dark">
         <Row>
           <Col md={3} className="align-self-center">
@@ -154,7 +143,6 @@ const Products = (props) => {
                 {item.name} - Stock: {item.instock}
               </Card.Title>
               <Card.Text>Unit Price: ${item.cost}</Card.Text>
-
               <input
                 name={item.name}
                 type="submit"
@@ -171,7 +159,12 @@ const Products = (props) => {
     return (
       <Card key={index}>
         <Card.Header>
-          <Accordion.Toggle as={Button} variant="link" eventKey={1 + index}>
+          <Accordion.Toggle
+            as={Button}
+            variant="link"
+            eventKey={1 + index}
+            className=""
+          >
             {item.name}
           </Accordion.Toggle>
         </Card.Header>
@@ -209,8 +202,7 @@ const Products = (props) => {
     console.log(`total updated to ${newTotal}`);
     return newTotal;
   };
-  // TODO: implement the restockProducts function
-  // const restockProducts = (url) => {};
+
   const restockProducts = (url) => {
     doFetch(url);
     let newItems = data.data.map((item) => {
@@ -218,17 +210,6 @@ const Products = (props) => {
       return { name, country, cost, instock };
     });
     setItems([...newItems]);
-    // let updatedItems = newItems.map((item, index) => {
-    //   let { name, country, cost, instock } = {
-    //     name: `${item.name}`,
-    //     country: `${item.country}`,
-    //     cost: item.cost,
-    //     instock: item.instock + items[index].instock,
-    //   };
-    //   return { name, country, cost, instock };
-    // });
-    // console.log(newItems);
-    // setItems([...updatedItems]);
   };
 
   return (
